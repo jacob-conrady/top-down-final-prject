@@ -1,0 +1,17 @@
+\\fisd-fs4\hs\lhs\187520\documents\visual studio 2015\Projects\WindowsGame4\WindowsGame4\WindowsGame4\bin\x86\Debug\Content\White Square.xnb
+\\fisd-fs4\hs\lhs\187520\documents\visual studio 2015\Projects\WindowsGame4\WindowsGame4\WindowsGame4\bin\x86\Debug\WindowsGame4.exe
+\\fisd-fs4\hs\lhs\187520\documents\visual studio 2015\Projects\WindowsGame4\WindowsGame4\WindowsGame4\bin\x86\Debug\WindowsGame4.pdb
+\\fisd-fs4\hs\lhs\187520\documents\visual studio 2015\Projects\WindowsGame4\WindowsGame4\WindowsGame4\bin\x86\Debug\Microsoft.Xna.Framework.dll
+\\fisd-fs4\hs\lhs\187520\documents\visual studio 2015\Projects\WindowsGame4\WindowsGame4\WindowsGame4\bin\x86\Debug\Microsoft.Xna.Framework.Game.dll
+\\fisd-fs4\hs\lhs\187520\documents\visual studio 2015\Projects\WindowsGame4\WindowsGame4\WindowsGame4\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.dll
+\\fisd-fs4\hs\lhs\187520\documents\visual studio 2015\Projects\WindowsGame4\WindowsGame4\WindowsGame4\bin\x86\Debug\Microsoft.Xna.Framework.Graphics.dll
+\\fisd-fs4\hs\lhs\187520\documents\visual studio 2015\Projects\WindowsGame4\WindowsGame4\WindowsGame4\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.dll
+\\fisd-fs4\hs\lhs\187520\documents\visual studio 2015\Projects\WindowsGame4\WindowsGame4\WindowsGame4\bin\x86\Debug\Microsoft.Xna.Framework.xml
+\\fisd-fs4\hs\lhs\187520\documents\visual studio 2015\Projects\WindowsGame4\WindowsGame4\WindowsGame4\bin\x86\Debug\Microsoft.Xna.Framework.Game.xml
+\\fisd-fs4\hs\lhs\187520\documents\visual studio 2015\Projects\WindowsGame4\WindowsGame4\WindowsGame4\bin\x86\Debug\Microsoft.Xna.Framework.Graphics.xml
+\\fisd-fs4\hs\lhs\187520\documents\visual studio 2015\Projects\WindowsGame4\WindowsGame4\WindowsGame4\bin\x86\Debug\Microsoft.Xna.Framework.GamerServices.xml
+\\fisd-fs4\hs\lhs\187520\documents\visual studio 2015\Projects\WindowsGame4\WindowsGame4\WindowsGame4\bin\x86\Debug\Microsoft.Xna.Framework.Input.Touch.xml
+\\fisd-fs4\hs\lhs\187520\documents\visual studio 2015\Projects\WindowsGame4\WindowsGame4\WindowsGame4\obj\x86\Debug\WindowsGame4.csprojResolveAssemblyReference.cache
+\\fisd-fs4\hs\lhs\187520\documents\visual studio 2015\Projects\WindowsGame4\WindowsGame4\WindowsGame4\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+\\fisd-fs4\hs\lhs\187520\documents\visual studio 2015\Projects\WindowsGame4\WindowsGame4\WindowsGame4\obj\x86\Debug\WindowsGame4.exe
+\\fisd-fs4\hs\lhs\187520\documents\visual studio 2015\Projects\WindowsGame4\WindowsGame4\WindowsGame4\obj\x86\Debug\WindowsGame4.pdb
