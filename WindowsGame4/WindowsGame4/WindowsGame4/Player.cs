@@ -71,7 +71,14 @@ namespace WindowsGame4
             playerRect.X = (int)playerX;
             playerRect.Y = (int)playerY;
         }
-
+        public void playMovement(GamePadState g,double timeSpeed)
+        {
+            playerX = playerX + (movementSpeed*g.ThumbSticks.Left.X);
+            playerY = playerY - (movementSpeed * g.ThumbSticks.Left.Y);
+            gravity();
+            playerRect.X = (int)playerX;
+            playerRect.Y = (int)playerY;
+        }
         public Texture2D getPlayerTexture()
         {
             return playerText;
