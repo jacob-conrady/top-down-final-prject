@@ -27,6 +27,7 @@ namespace WindowsGame4
         KeyboardState kb;
         KeyboardState oldKb;
         int gameTime;
+        public enum gameState { setUp,mainMenu,paused,slow,play};
 
         int globalMovementSpeed;
         Texture2D playerText;
@@ -183,6 +184,7 @@ namespace WindowsGame4
             spriteBatch.Begin();
             spriteBatch.Draw(player1.getPlayerTexture(), player1.getPlayerRectangle(), Color.White);
             spriteBatch.Draw(player2.getPlayerTexture(), player2.getPlayerRectangle(), Color.White);
+            spriteBatch.Draw(player1.getPlayerTexture(),player1.getArrowRect(),null,Color.White,player1.getAngle(),player1.getOrigin(),SpriteEffects.None,0);
             spriteBatch.End();
 
             // TODO: Add your drawing code here

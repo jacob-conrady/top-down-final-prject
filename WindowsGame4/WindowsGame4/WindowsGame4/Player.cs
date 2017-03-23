@@ -15,6 +15,8 @@ namespace WindowsGame4
     {
         Texture2D playerText;
         Rectangle playerRect;
+        Rectangle arrowRect;
+        float rotAngle;
         Double playerX;
         Double playerY;
         int movementSpeed;
@@ -75,7 +77,7 @@ namespace WindowsGame4
         {
             playerX = playerX + (movementSpeed*g.ThumbSticks.Left.X);
             playerY = playerY - (movementSpeed * g.ThumbSticks.Left.Y);
-            gravity();
+            //gravity();
             playerRect.X = (int)playerX;
             playerRect.Y = (int)playerY;
         }
@@ -87,6 +89,27 @@ namespace WindowsGame4
         public Rectangle getPlayerRectangle()
         {
             return playerRect;
+        }
+        public Rectangle getArrowRect()
+        {
+            return arrowRect;
+        }
+        public Vector2 getOrigin()
+        {
+            Vector2 origin = new Vector2(playerRect.Width / 2, playerRect.Height / 2);
+            return origin;
+        }
+        public void setArrow(GamePadThumbSticks gp)
+        {
+            rotAngle= (float)Math.Atan2(gp.Right.X, -gp.Right.Y);
+        }
+        public void setArrow(MouseState gp)
+        {
+            rotAngle = (float)Math.Atan2(gp.X, -gp.Y);
+        }
+        public float getAngle()
+        {
+            return rotAngle;
         }
     }
 }
