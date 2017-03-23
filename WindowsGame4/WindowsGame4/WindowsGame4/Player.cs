@@ -20,6 +20,9 @@ namespace WindowsGame4
         Double playerX;
         Double playerY;
         int movementSpeed;
+        int topSpeed;
+        private Double verticalSpeed;
+        private Double horizontalSpeed;
         Keys up;
         Keys down;
         Keys left;
@@ -36,7 +39,10 @@ namespace WindowsGame4
             this.down = down;
             this.left = left;
             this.right = right;
-        }
+            verticalSpeed = 0;
+            horizontalSpeed = 0;
+            topSpeed = 5; //Add top speed to input
+    }
 
         public Player(Rectangle playerRect, Texture2D playerText, Double playerX, Double playerY, int movementSpeed, Keys up, Keys down, Keys left, Keys right)
         {
@@ -49,27 +55,37 @@ namespace WindowsGame4
             this.down = down;
             this.left = left;
             this.right = right;
+            verticalSpeed = 0;
+            horizontalSpeed = 0;
+            topSpeed = 5; //Add top speed to input
         }
 
-        public void playerMovement(KeyboardState kb, double timeSpeed)
+        public void playerMovement(KeyboardState kb, double timeSpeed, List<Platform> allPlatforms)
         {
+            //Take out + in += for more responsive movement
             if (kb.IsKeyDown(up))
             {
-                playerY -= movementSpeed * timeSpeed;
+                horizontalSpeed += -movementSpeed * timeSpeed;
             }
             if (kb.IsKeyDown(down))
             {
-                playerY += movementSpeed * timeSpeed;
+                horizontalSpeed += movementSpeed * timeSpeed;
             }
             if (kb.IsKeyDown(left))
             {
-                playerX -= movementSpeed * timeSpeed;
+                verticalSpeed += -movementSpeed * timeSpeed;
             }
             if (kb.IsKeyDown(right))
             {
-                playerX += movementSpeed * timeSpeed;
+                verticalSpeed += movementSpeed * timeSpeed;
             }
 
+            gravity(allPlatforms);
+
+            topSpeedFix();
+
+            playerX += horizontalSpeed;
+            playerY += verticalSpeed;
             playerRect.X = (int)playerX;
             playerRect.Y = (int)playerY;
         }
@@ -89,6 +105,53 @@ namespace WindowsGame4
         public Rectangle getPlayerRectangle()
         {
             return playerRect;
+        }
+
+        public void topSpeedFix()
+        {
+            if (verticalSpeed > topSpeed)
+            {
+                verticalSpeed = topSpeed;
+            }
+            if (verticalSpeed < -topSpeed)
+            {
+                verticalSpeed = -topSpeed;
+            }
+            if (horizontalSpeed > topSpeed)
+            {
+                horizontalSpeed = topSpeed;
+            }
+            if (horizontalSpeed < -topSpeed)
+            {
+                horizontalSpeed = -topSpeed;
+            }
+        }
+
+        public void gravity(List<Platform> platforms)
+        {
+            Platform p = floorIntersection(platforms);
+            if (p == null)
+            {
+                verticalSpeed += 9.8;
+            }
+            else
+            {
+                verticalSpeed = 0;
+                playerRect.X = p.getRect().X - playerRect.Height;
+            }
+        }
+
+        public Platform floorIntersection(List<Platform> platforms)
+        {
+            Rectangle playerBottom = new Rectangle(playerRect.X, playerRect.Y + playerRect.Height, playerRect.Width, 1);
+            foreach(Platform p in platforms)
+            {
+                if(playerBottom.Intersects(p.getRect()))
+                {
+                    return p;
+                }
+            }
+            return null;
         }
         public Rectangle getArrowRect()
         {

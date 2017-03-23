@@ -40,6 +40,8 @@ namespace WindowsGame4
         Double timeSpeed;
         Boolean timeSlow;
 
+        List<Platform> allPlatforms;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -62,6 +64,8 @@ namespace WindowsGame4
 
             firstLoop = true;
             //player1 = new Player(new Rectangle(50, 50, 20, 20), playerText, (double)50, (double)50, globalMovementSpeed, Keys.W, Keys.S, Keys.A, Keys.D);
+
+            allPlatforms = new List<Platform>();
 
             gameTime = 0;
             timeSpeed = 1.0;
@@ -107,10 +111,11 @@ namespace WindowsGame4
             {
                 player1 = new Player(new Rectangle(50, 50, 20, 20), playerText, (double)50, (double)50, globalMovementSpeed, Keys.W, Keys.S, Keys.A, Keys.D);
                 player2 = new Player(new Rectangle(200, 200, 20, 20), playerText, (double)200, (double)200, globalMovementSpeed, Keys.Up, Keys.Down, Keys.Left, Keys.Right);
+                allPlatforms.Add(new Platform(0, 300, 500, 6, playerText));
             }
 
-            player1.playerMovement(kb, timeSpeed);
-            player2.playerMovement(kb, timeSpeed);
+            player1.playerMovement(kb, timeSpeed, allPlatforms);
+            player2.playerMovement(kb, timeSpeed, allPlatforms);
 
             if (kb.IsKeyDown(Keys.T) && oldKb != kb)
             {
@@ -124,6 +129,7 @@ namespace WindowsGame4
                     timeSpeed = .5;
                     timeSlow = true;
                 }
+                Dictionary<string, Texture2D> o;
             }
 
 
@@ -184,7 +190,12 @@ namespace WindowsGame4
             spriteBatch.Begin();
             spriteBatch.Draw(player1.getPlayerTexture(), player1.getPlayerRectangle(), Color.White);
             spriteBatch.Draw(player2.getPlayerTexture(), player2.getPlayerRectangle(), Color.White);
-            spriteBatch.Draw(player1.getPlayerTexture(),player1.getArrowRect(),null,Color.White,player1.getAngle(),player1.getOrigin(),SpriteEffects.None,0);
+            foreach (Platform p in allPlatforms)
+            {
+                spriteBatch.Draw(p.getText(),
+                    p.getRect(),
+                    Color.White);
+            }
             spriteBatch.End();
 
             // TODO: Add your drawing code here
