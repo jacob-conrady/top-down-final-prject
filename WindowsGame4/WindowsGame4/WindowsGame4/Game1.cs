@@ -26,6 +26,8 @@ namespace WindowsGame4
 
         KeyboardState kb;
         KeyboardState oldKb;
+        GamePadState gp;
+        GamePadState oldGp;
         int gameTime;
         public enum gameState { setUp,mainMenu,paused,slow,play};
 
@@ -103,6 +105,7 @@ namespace WindowsGame4
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
+            gp = GamePad.GetState(PlayerIndex.One);
             kb = Keyboard.GetState();
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
@@ -113,8 +116,10 @@ namespace WindowsGame4
                 player2 = new Player(new Rectangle(200, 200, 20, 20), playerText, (double)200, (double)200, globalMovementSpeed, Keys.Up, Keys.Down, Keys.Left, Keys.Right);
                 allPlatforms.Add(new Platform(0, 300, 500, 6, playerText));
             }
-
-            player1.playerMovement(kb, timeSpeed, allPlatforms);
+            
+            player1.playerMovement(gp, timeSpeed, allPlatforms);
+            player1.setArrow(gp);
+            player1.setArrowrect(player1.getPlayerRectangle());
             player2.playerMovement(kb, timeSpeed, allPlatforms);
 
             if (kb.IsKeyDown(Keys.T) && oldKb != kb)
@@ -188,8 +193,9 @@ namespace WindowsGame4
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
-            spriteBatch.Draw(player1.getPlayerTexture(), player1.getPlayerRectangle(), Color.White);
+           // spriteBatch.Draw(player1.getPlayerTexture(), player1.getPlayerRectangle(), Color.White);
             spriteBatch.Draw(player2.getPlayerTexture(), player2.getPlayerRectangle(), Color.White);
+            spriteBatch.Draw(player1.getPlayerTexture(), player1.getArrowRect(), null, Color.White, player1.getAngle(), player1.getOrigin(), SpriteEffects.None, 0);
             foreach (Platform p in allPlatforms)
             {
                 spriteBatch.Draw(p.getText(),

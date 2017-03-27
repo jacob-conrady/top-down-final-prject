@@ -89,11 +89,11 @@ namespace WindowsGame4
             playerRect.X = (int)playerX;
             playerRect.Y = (int)playerY;
         }
-        public void playMovement(GamePadState g,double timeSpeed)
+        public void playMovement(GamePadState g,double timeSpeed,List<Platform>allPlatforms)
         {
             playerX = playerX + (movementSpeed*g.ThumbSticks.Left.X);
             playerY = playerY - (movementSpeed * g.ThumbSticks.Left.Y);
-            //gravity();
+            gravity(allPlatforms);
             playerRect.X = (int)playerX;
             playerRect.Y = (int)playerY;
         }
@@ -153,18 +153,26 @@ namespace WindowsGame4
             }
             return null;
         }
+        public void setArrowrect(Rectangle player)
+        {
+            arrowRect = new Rectangle(playerRect.X, playerRect.Y, playerRect.Width / 2, playerRect.Height / 2);
+        }
         public Rectangle getArrowRect()
         {
             return arrowRect;
         }
         public Vector2 getOrigin()
         {
-            Vector2 origin = new Vector2(playerRect.Width / 2, playerRect.Height / 2);
+            Vector2 origin = new Vector2(playerRect.Width*2,playerRect.Height/2);
+            //origin = new Vector2(0, 0);
             return origin;
         }
-        public void setArrow(GamePadThumbSticks gp)
+        public void setArrow(GamePadState gp)
         {
-            rotAngle= (float)Math.Atan2(gp.Right.X, -gp.Right.Y);
+            if (gp.ThumbSticks.Right.X != 0 && -gp.ThumbSticks.Right.Y != 0)
+            {
+                rotAngle = (float)Math.Atan2(gp.ThumbSticks.Right.X, -gp.ThumbSticks.Right.Y);
+            }
         }
         public void setArrow(MouseState gp)
         {
